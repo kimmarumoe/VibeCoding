@@ -1,0 +1,7 @@
+node_modules
+frontend/dist
+frontend/.env
+ai-server/.venv
+__pycache__
+*.pyc
+.DS_Store
