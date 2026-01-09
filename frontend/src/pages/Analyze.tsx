@@ -101,42 +101,49 @@ const Analyze = () => {
   const stepOneReady = Boolean(result);
 
   return (
-    <div>
-      <div className="section-title">이미지를 레고 설계도로 변환하는 페이지</div>
-      <div className="subtle">업로드 → 분석 → 결과 → (선택) 조립 가이드 순으로 진행합니다.</div>
-
-      <div className="grid-2" style={{ marginTop: "20px" }}>
-        <UploadPanel imageFile={imageFile} previewUrl={previewUrl} onSelectImage={handleSelectImage} />
-        <AnalysisOptionsPanel options={options} onChange={setOptions} />
-      </div>
-
-      <div style={{ marginTop: "20px", display: "flex", gap: "12px", flexWrap: "wrap" }}>
-        <button className="btn" type="button" onClick={runAnalyze} disabled={isLoading}>
-          {isLoading ? "분석 중..." : "분석 실행"}
-        </button>
-        <Link className="btn secondary" to="/gallery">
-          샘플 결과 보기
-        </Link>
-      </div>
-
-      {error && (
-        <div className="callout">
-          <div>
-            <strong>{error.message}</strong>
-            <div className="subtle">
-              {error.isColdStart
-                ? "서버가 잠든 상태일 수 있습니다. 재시도 버튼을 눌러주세요."
-                : "요청이 실패했습니다. 네트워크 상태를 확인해주세요."}
-            </div>
-          </div>
-          <button className="btn secondary" type="button" onClick={runAnalyze}>
-            재시도
-          </button>
+    <div className="container">
+      <section className="section">
+        <div className="hero-panel">
+          <div className="pill">Analyze · STEP 01</div>
+          <div className="section-title">이미지를 레고 설계도로 변환하는 페이지</div>
+          <div className="subtle">업로드 → 분석 → 결과 → (선택) 조립 가이드 순으로 진행합니다.</div>
         </div>
-      )}
+      </section>
+
+      <section className="section">
+        <div className="grid-2">
+          <UploadPanel imageFile={imageFile} previewUrl={previewUrl} onSelectImage={handleSelectImage} />
+          <AnalysisOptionsPanel options={options} onChange={setOptions} />
+        </div>
+
+        <div style={{ marginTop: "20px", display: "flex", gap: "12px", flexWrap: "wrap" }}>
+          <button className="btn accent" type="button" onClick={runAnalyze} disabled={isLoading}>
+            {isLoading ? "분석 중..." : "분석 실행"}
+          </button>
+          <Link className="btn secondary" to="/gallery">
+            샘플 결과 보기
+          </Link>
+        </div>
+
+        {error && (
+          <div className="callout">
+            <div>
+              <strong>{error.message}</strong>
+              <div className="subtle">
+                {error.isColdStart
+                  ? "서버가 잠든 상태일 수 있습니다. 재시도 버튼을 눌러주세요."
+                  : "요청이 실패했습니다. 네트워크 상태를 확인해주세요."}
+              </div>
+            </div>
+            <button className="btn secondary" type="button" onClick={runAnalyze}>
+              재시도
+            </button>
+          </div>
+        )}
+      </section>
 
       {result && (
-        <div style={{ marginTop: "24px" }}>
+        <section className="section">
           <div className="card" style={{ marginBottom: "16px" }}>
             <div className="step-label">Step 01 · Result</div>
             <h3 className="section-title">분석 요약</h3>
@@ -159,10 +166,10 @@ const Analyze = () => {
               <BrickMosaicPreview meta={result.meta} bricks={result.bricks} />
             </div>
           </div>
-        </div>
+        </section>
       )}
 
-      <div style={{ marginTop: "28px" }}>
+      <section className="section">
         <div className="step-label">Step 02 · Optional</div>
         <button
           className="btn"
@@ -173,13 +180,13 @@ const Analyze = () => {
           {isStepsLoading ? "가이드 생성 중..." : "조립 가이드 생성"}
         </button>
         {!stepOneReady && <div className="subtle">STEP 01 완료 후에만 활성화됩니다.</div>}
-      </div>
 
-      {steps && steps.length > 0 && (
-        <div style={{ marginTop: "20px" }}>
-          <BrickGuidePanel steps={steps} />
-        </div>
-      )}
+        {steps && steps.length > 0 && (
+          <div style={{ marginTop: "20px" }}>
+            <BrickGuidePanel steps={steps} />
+          </div>
+        )}
+      </section>
 
       {coldStartHint && (
         <div className="toast">

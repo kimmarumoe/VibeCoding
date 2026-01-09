@@ -18,52 +18,59 @@ const Gallery = () => {
   }, [gridFilter, colorFilter]);
 
   return (
-    <div>
-      <div className="section-title">Gallery</div>
-      <p className="subtle">실제 결과 형태를 먼저 확인하고 분석 페이지로 이동하세요.</p>
+    <div className="container">
+      <section className="section">
+        <div className="hero-panel">
+          <div className="pill">Gallery · Preview</div>
+          <div className="section-title">Gallery</div>
+          <p className="subtle">실제 결과 형태를 먼저 확인하고 분석 페이지로 이동하세요.</p>
+        </div>
+      </section>
 
-      <div className="card" style={{ marginBottom: "18px" }}>
-        <div className="option-row">
-          {gridOptions.map((option) => (
-            <button
-              key={option}
-              className={`chip ${gridFilter === option ? "active" : ""}`}
-              type="button"
-              onClick={() => setGridFilter(option)}
-            >
-              {option === "all" ? "All grids" : option}
-            </button>
+      <section className="section">
+        <div className="card" style={{ marginBottom: "18px" }}>
+          <div className="option-row">
+            {gridOptions.map((option) => (
+              <button
+                key={option}
+                className={`chip ${gridFilter === option ? "active" : ""}`}
+                type="button"
+                onClick={() => setGridFilter(option)}
+              >
+                {option === "all" ? "All grids" : option}
+              </button>
+            ))}
+          </div>
+          <div className="option-row" style={{ marginTop: "10px" }}>
+            {colorOptions.map((option) => (
+              <button
+                key={option}
+                className={`chip ${colorFilter === option ? "active" : ""}`}
+                type="button"
+                onClick={() => setColorFilter(option)}
+              >
+                {option === "all" ? "All colors" : `${option} colors`}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div className="gallery-grid">
+          {filtered.map((sample) => (
+            <Link className="gallery-card" key={sample.id} to={`/gallery/${sample.id}`}>
+              <div style={{ display: "grid", gap: "8px" }}>
+                <img src={sample.original} alt={`${sample.title} original`} style={{ width: "100%", borderRadius: "16px" }} />
+                <img src={sample.mosaic} alt={`${sample.title} mosaic`} style={{ width: "100%", borderRadius: "16px" }} />
+              </div>
+              <div>
+                <strong>{sample.title}</strong>
+                <div className="subtle">{sample.gridSize} · {sample.colorLimit} colors</div>
+                <div className="subtle">{sample.brickCount} bricks</div>
+              </div>
+            </Link>
           ))}
         </div>
-        <div className="option-row" style={{ marginTop: "10px" }}>
-          {colorOptions.map((option) => (
-            <button
-              key={option}
-              className={`chip ${colorFilter === option ? "active" : ""}`}
-              type="button"
-              onClick={() => setColorFilter(option)}
-            >
-              {option === "all" ? "All colors" : `${option} colors`}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      <div className="gallery-grid">
-        {filtered.map((sample) => (
-          <Link className="gallery-card" key={sample.id} to={`/gallery/${sample.id}`}>
-            <div style={{ display: "grid", gap: "8px" }}>
-              <img src={sample.original} alt={`${sample.title} original`} style={{ width: "100%", borderRadius: "16px" }} />
-              <img src={sample.mosaic} alt={`${sample.title} mosaic`} style={{ width: "100%", borderRadius: "16px" }} />
-            </div>
-            <div>
-              <strong>{sample.title}</strong>
-              <div className="subtle">{sample.gridSize} · {sample.colorLimit} colors</div>
-              <div className="subtle">{sample.brickCount} bricks</div>
-            </div>
-          </Link>
-        ))}
-      </div>
+      </section>
     </div>
   );
 };

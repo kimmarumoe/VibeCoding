@@ -14,7 +14,7 @@ const App = () => {
           <span className="brand-mark">LDA</span>
           <div>
             <div className="brand-title">Lego Design Aid</div>
-            <div className="brand-sub">Practical mosaic planning, not just pretty pixels.</div>
+            <div className="brand-sub">Design-first mosaics for real builders.</div>
           </div>
         </div>
         <nav className="site-nav">
@@ -40,7 +40,7 @@ const App = () => {
       </main>
       <footer className="site-footer">
         <div>LDA · Personal R&D project · 2024</div>
-        <div>Rendered for builders first. Powered by React + FastAPI.</div>
+        <div>Built for LEGO builders. React + FastAPI.</div>
       </footer>
     </div>
   );
