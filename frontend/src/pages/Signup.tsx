@@ -16,11 +16,12 @@ const Signup = () => {
       <section className="section">
         <div className="auth-shell">
           <div className="auth-card">
-            <h3 className="section-title">이메일 회원가입</h3>
+            <h3 className="section-title">간단 회원가입</h3>
             <form>
-              <input type="text" placeholder="Name" />
-              <input type="email" placeholder="Email" />
-              <input type="password" placeholder="Password" />
+              <input type="text" placeholder="이름" />
+              <input type="text" placeholder="닉네임" />
+              <input type="number" placeholder="나이" min={1} />
+              <input type="date" />
               <button className="btn" type="button">
                 계정 만들기
               </button>
