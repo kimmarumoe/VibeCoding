@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 const Home = () => {
   return (
     <div className="container">
-      <section className="hero section">
-        <div>
+      <section className="section">
+        <div className="hero-card">
           <div className="pill">Design + Build · LDA</div>
           <h1 className="hero-title">이미지를 실제 레고 모자이크 설계도로 전환합니다.</h1>
           <p className="hero-copy">
@@ -23,52 +23,52 @@ const Home = () => {
             <strong>콜드스타트 안내</strong>
             <span className="subtle">첫 분석은 서버 준비로 지연될 수 있으며 자동 안내 및 재시도를 제공합니다.</span>
           </div>
-        </div>
-        <div className="hero-panel">
-          <div className="section-title">3-step flow</div>
-          <div className="summary-grid">
-            <div className="summary-item">
-              <strong>1. 업로드 + 옵션</strong>
-              <div className="subtle">그리드 크기, 색상 제한, 브릭 타입 선택</div>
-            </div>
-            <div className="summary-item">
-              <strong>2. 분석 결과 확인</strong>
-              <div className="subtle">요약, 팔레트, 모자이크 프리뷰</div>
-            </div>
-            <div className="summary-item">
-              <strong>3. 조립 가이드 생성</strong>
-              <div className="subtle">원할 때만 단계별 조립 안내</div>
-            </div>
-          </div>
-          <div className="hero-visual" style={{ marginTop: "18px" }}>
-            <div className="visual-tile">
-              <div className="stat">32 x 32</div>
-              <div>최적 격자 크기 추천</div>
-            </div>
-            <div className="visual-tile light">
-              <div className="stat">16</div>
-              <div>안정적인 팔레트 컬러 수</div>
-            </div>
-          </div>
+          <div className="hero-shape orange" />
+          <div className="hero-shape cream" />
+          <div className="hero-shape spark" />
         </div>
       </section>
 
       <section className="section">
-        <div className="grid-3">
-          <div className="story-card">
-            <div className="step-label">Principle 01</div>
-            <h3 className="section-title">Buildable First</h3>
-            <p className="subtle">설계도가 실제 조립 가능해야 한다는 기준을 우선합니다.</p>
+        <div className="hero">
+          <div>
+            <div className="step-label">How it works</div>
+            <h2 className="section-title">우리는 조립 가능한 설계를 먼저 생각합니다.</h2>
+            <p className="subtle">
+              설계도는 곧 조립 과정입니다. LDA는 그리드, 팔레트, 브릭 목록을 정확히 보여주고 필요한 경우에만
+              조립 단계를 생성합니다.
+            </p>
+            <div className="hero-cta">
+              <Link className="btn" to="/analyze">
+                설계 분석 시작
+              </Link>
+            </div>
           </div>
-          <div className="story-card">
-            <div className="step-label">Principle 02</div>
-            <h3 className="section-title">Progressive Disclosure</h3>
-            <p className="subtle">STEP 01에서 핵심 설계를 확인하고, STEP 02는 필요할 때만 확장합니다.</p>
-          </div>
-          <div className="story-card">
-            <div className="step-label">Principle 03</div>
-            <h3 className="section-title">Palette Discipline</h3>
-            <p className="subtle">제한된 색상과 브릭 타입으로 현실적인 조립 경험을 설계합니다.</p>
+          <div className="hero-panel">
+            <div className="summary-grid">
+              <div className="summary-item">
+                <strong>STEP 01</strong>
+                <div className="subtle">업로드 + 옵션</div>
+              </div>
+              <div className="summary-item">
+                <strong>STEP 01</strong>
+                <div className="subtle">팔레트 + 프리뷰</div>
+              </div>
+              <div className="summary-item">
+                <strong>STEP 02</strong>
+                <div className="subtle">조립 가이드 생성</div>
+              </div>
+            </div>
+            <div className="hero-visual" style={{ marginTop: "18px" }}>
+              <div className="visual-tile">
+                <div className="stat">32 x 32</div>
+                <div>추천 격자 크기</div>
+              </div>
+              <div className="visual-tile light">
+                <div className="stat">16</div>
+                <div>컬러 제한 옵션</div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
