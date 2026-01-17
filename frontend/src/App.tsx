@@ -12,13 +12,6 @@ const App = () => {
   return (
     <div className="app-shell">
       <header className="site-header">
-        <nav className="site-nav left">
-          <NavLink to="/" end>
-            Home
-          </NavLink>
-          <NavLink to="/analyze">Analyze</NavLink>
-          <NavLink to="/gallery">Gallery</NavLink>
-        </nav>
         <NavLink className="brand" to="/">
           <span className="brand-mark">LDA</span>
           <div>
@@ -26,9 +19,19 @@ const App = () => {
             <div className="brand-sub">Design-first mosaics for real builders.</div>
           </div>
         </NavLink>
-        <nav className="site-nav right">
-          <NavLink to="/about">About</NavLink>
-          <NavLink to="/login">Login</NavLink>
+        <nav className="site-nav">
+          <div className="nav-group">
+            <NavLink to="/" end>
+              Home
+            </NavLink>
+            <NavLink to="/analyze">Analyze</NavLink>
+            <NavLink to="/gallery">Gallery</NavLink>
+          </div>
+          <span className="nav-divider" aria-hidden="true" />
+          <div className="nav-group">
+            <NavLink to="/about">About</NavLink>
+            <NavLink to="/login">Login</NavLink>
+          </div>
         </nav>
       </header>
       <main className="site-main">
